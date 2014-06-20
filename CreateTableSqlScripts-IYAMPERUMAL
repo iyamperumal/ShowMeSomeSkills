@@ -1,0 +1,57 @@
+USE DBName
+GO
+
+/***********************************************
+Name: [dbo].[tblInvoice]
+Author: IYAMPERUMAL(PERU) RATHINAM
+DATE: 19-JUN-2014
+***********************************************/
+
+CREATE TABLE [dbo].[tblInvoice](
+	[InvoiceNumber] [varchar](10) NOT NULL,
+	[CompanyName] [varchar](100) NOT NULL,
+	[BillingContact] [varchar](100) NULL,
+	[BillingStreet] [varchar](200) NULL,
+	[BillingCity] [varchar](100) NULL,
+	[BillingState] [varchar](100) NULL,
+	[BillingZip] [numeric](5, 0) NULL,
+	[PostedDate] [datetime] NULL,
+	[ShippingDate] [datetime] NULL,
+	[RequisitionDate] [datetime] NULL,
+	[TaxRate] [decimal](18, 2) NULL,
+	[SubTotal] [decimal](18, 2) NULL,
+	[StoreCommissionAmt] [decimal](18, 2) NULL,
+	[Shipping] [decimal](18, 2) NULL,
+	[Total] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_tblInvoice] PRIMARY KEY CLUSTERED 
+(
+	[InvoiceNumber] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+/***********************************************
+Name: [dbo].[tblInvoiceItem]
+Author: IYAMPERUMAL(PERU) RATHINAM
+DATE: 19-JUN-2014
+***********************************************/
+
+CREATE TABLE [dbo].[tblInvoiceItem](
+	[LineItemNumber] [int] IDENTITY(1,1) NOT NULL,
+	[InvoiceNumber] [varchar](10) NOT NULL,
+	[LineText] [varchar](100) NULL,
+	[Taxable] [bit] NULL,
+	[Quantity] [int] NULL,
+	[UnitPrice] [decimal](18, 2) NULL,
+	[Discount] [int] NULL,
+	[SubTotal] [decimal](18, 2) NULL,
+	[Total] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_tblInvoiceItem] PRIMARY KEY CLUSTERED 
+(
+	[LineItemNumber] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
