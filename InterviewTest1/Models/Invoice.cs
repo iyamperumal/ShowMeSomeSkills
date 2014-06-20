@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace InterviewTest1.Models
@@ -69,6 +69,11 @@ namespace InterviewTest1.Models
         /// Total of all line items total, includes tax and discounts
         /// </summary>
         public decimal SubTotal { get; set; }
+
+        /// <summary>
+        /// Store Commission Amount = line item subtotal - discounts
+        /// </summary>
+        public decimal StoreCommissionAmt { get; set; }
 
         /// <summary>
         /// Actual shipping costs
